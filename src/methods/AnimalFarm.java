@@ -1,5 +1,7 @@
 package methods;
 
+import java.applet.AudioClip;
+
 //Copyright (c) The League of Amazing Programmers 2013-2017
 //Level 0
 
@@ -9,6 +11,7 @@ import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.swing.JApplet;
 import javax.swing.JOptionPane;
 
 public class AnimalFarm {
@@ -23,6 +26,7 @@ String animal = JOptionPane.showInputDialog("what animal do you want");
 if (animal.equalsIgnoreCase("cow")) {
 	playMoo();
 }
+
 }
 
 void playMoo() {
@@ -46,15 +50,15 @@ String llamaFile = "llama.wav";
 
 /* Ignore this stuff */
 
-public void playNoise(String soundFile) {
-	try {
-		 Clip clip = AudioSystem.getClip();
-		 clip.open(AudioSystem.getAudioInputStream(getClass().getResource(soundFile)));
-		 clip.start();
+public void playNoise(String soundfile) {
+	 try {
+		 AudioClip clip = JApplet.newAudioClip(getClass().getResource(soundfile));
+		 clip.play();
 		 Thread.sleep(3400);
-	} catch (Exception ex) {
-  	ex.printStackTrace();
-	}
+	 }
+	 catch(Exception ex) {
+		 ex.printStackTrace();
+	 }
 }
 
 public static void main(String[] args) {
